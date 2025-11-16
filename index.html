@@ -1,52 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Peer to Peer Web Chat</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title>Peer to Peer Web Chat</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>Peer to Peer Web Chat</h1>
-  </header>
 
-  <main>
-    <div id="loginDiv">
-      <!-- Pantalla inicial con dos botones -->
-      <div id="authChoice">
-        <button id="showLogin">Sign In</button>
-        <button id="showRegister">Register</button>
-      </div>
+<div id="main-container">
 
-      <!-- Formulario de inicio de sesión -->
-      <div id="loginForm" class="authForm hidden">
-        <h2>Sign In</h2>
-        <input type="text" id="loginUser" placeholder="Username"><br>
-        <input type="password" id="loginPass" placeholder="Password"><br>
-        <button id="loginBtn">Enter</button>
-        <div id="loginMsg"></div>
-      </div>
+    <h1 class="title">Peer to Peer Web Chat</h1>
 
-      <!-- Formulario de registro -->
-      <div id="registerForm" class="authForm hidden">
+    <!-- Button Screen (first thing user sees) -->
+    <div id="start-screen">
+        <button class="main-btn" onclick="showRegister()">Register</button>
+        <button class="main-btn" onclick="showLogin()">Sign In</button>
+    </div>
+
+    <!-- Registration Form -->
+    <div id="register-screen" class="hidden form-box">
         <h2>Register</h2>
-        <input type="text" id="regUser" placeholder="Username"><br>
-        <input type="password" id="regPass" placeholder="Password"><br>
-        <button id="registerBtn">Register</button>
-        <div id="regMsg"></div>
-      </div>
+        <input type="text" id="reg-username" placeholder="Username">
+        <input type="password" id="reg-password" placeholder="Password">
+        <button class="main-btn" onclick="registerUser()">Create Account</button>
+        <button class="link-btn" onclick="goBack()">Back</button>
     </div>
 
-    <!-- Aquí irá el chat principal -->
-    <div id="chatDiv" class="hidden">
-      <h2>Chat Room</h2>
-      <div id="messages" style="height:300px;overflow:auto;background:#1e1e2f;padding:10px;border-radius:6px;margin-bottom:10px;"></div>
-      <input type="text" id="msgInput" placeholder="Type a message..." style="width:70%;padding:8px;border-radius:6px;border:none;">
-      <button id="sendBtn">Send</button>
+    <!-- Login Form -->
+    <div id="login-screen" class="hidden form-box">
+        <h2>Sign In</h2>
+        <input type="text" id="login-username" placeholder="Username">
+        <input type="password" id="login-password" placeholder="Password">
+        <button class="main-btn" onclick="loginUser()">Log In</button>
+        <button class="link-btn" onclick="goBack()">Back</button>
     </div>
-  </main>
 
-  <script src="app.js"></script>
+    <!-- Chat UI -->
+    <div id="chat-screen" class="hidden">
+        <h2>Welcome <span id="current-user"></span>!</h2>
+
+        <div id="messages"></div>
+
+        <div id="send-box">
+            <input type="text" id="msg-input" placeholder="Type a message..." onkeypress="checkEnter(event)">
+            <button class="main-btn" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
