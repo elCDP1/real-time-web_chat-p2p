@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Peer to Peer Web Chat</title>
+  <!-- Fuente Nunito desde Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,26 +14,26 @@
 
   <main>
     <div id="loginDiv">
-      <h2>Welcome to Peer to Peer Web Chat</h2>
-      <p>Please log in or register to start chatting.</p>
-
-      <div class="buttonContainer">
-        <button id="showLogin">Log In</button>
+      <!-- Pantalla inicial con dos botones -->
+      <div id="authChoice">
+        <button id="showLogin">Sign In</button>
         <button id="showRegister">Register</button>
       </div>
 
-      <div id="loginForm" class="authForm">
-        <h3>Log In</h3>
-        Username: <input type="text" id="loginUser" placeholder="Username"><br>
-        Password: <input type="password" id="loginPass" placeholder="Password"><br>
+      <!-- Formulario de inicio de sesión -->
+      <div id="loginForm" class="authForm hidden">
+        <h2>Sign In</h2>
+        <input type="text" id="loginUser" placeholder="Username"><br>
+        <input type="password" id="loginPass" placeholder="Password"><br>
         <button id="loginBtn">Enter</button>
         <div id="loginMsg"></div>
       </div>
 
-      <div id="registerForm" class="authForm">
-        <h3>Register</h3>
-        Username: <input type="text" id="regUser" placeholder="Username"><br>
-        Password: <input type="password" id="regPass" placeholder="Password"><br>
+      <!-- Formulario de registro -->
+      <div id="registerForm" class="authForm hidden">
+        <h2>Register</h2>
+        <input type="text" id="regUser" placeholder="Username"><br>
+        <input type="password" id="regPass" placeholder="Password"><br>
         <button id="registerBtn">Register</button>
         <div id="regMsg"></div>
       </div>
@@ -39,5 +41,25 @@
   </main>
 
   <script src="app.js"></script>
+  <script>
+    // Mostrar/ocultar formularios según botón pulsado
+    const showLoginBtn = document.getElementById("showLogin");
+    const showRegisterBtn = document.getElementById("showRegister");
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+    const authChoice = document.getElementById("authChoice");
+
+    showLoginBtn.addEventListener("click", () => {
+      loginForm.classList.remove("hidden");
+      registerForm.classList.add("hidden");
+      authChoice.classList.add("hidden");
+    });
+
+    showRegisterBtn.addEventListener("click", () => {
+      registerForm.classList.remove("hidden");
+      loginForm.classList.add("hidden");
+      authChoice.classList.add("hidden");
+    });
+  </script>
 </body>
 </html>
